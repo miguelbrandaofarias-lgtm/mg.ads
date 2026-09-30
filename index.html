@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MGads · Criativos que geram vendas</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+color-scheme:dark;--bg:#0b0b0a;--fg:#f6f1e4;--muted:#9c9488;--card:#161512;--line:#2c2a24;--accent:#f4b100;--accent-fg:#141208}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 Montserrat,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+section{padding:56px 0;border-top:1px solid var(--line)}
+h1{font-size:clamp(28px,6.5vw,46px);line-height:1.15;margin:0 0 18px;font-weight:800;letter-spacing:-.01em}
+h2{font-size:clamp(24px,5vw,32px);line-height:1.2;margin:0 0 24px;font-weight:800}
+h3{margin:0 0 6px;font-size:19px;font-weight:600}
+p{margin:0 0 14px}
+.muted{color:var(--muted)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);text-decoration:none;font-weight:800;padding:15px 28px;border-radius:10px;font-size:17px}
+.btn:focus-visible{outline:3px solid var(--fg);outline-offset:3px}
+.btn:active{transform:scale(.98)}
+.hero-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.btn-outline{background:transparent;border:1px solid var(--accent);color:var(--fg)}
+.hero{text-align:center;padding:12px 20px 56px}
+.logo{display:block;width:min(100%,420px);height:auto;margin:0 auto 8px;max-width:600px;margin:0 auto 26px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+.video{aspect-ratio:9/16;background:var(--card);border:1px dashed var(--line);border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px;overflow:hidden}
+.video video{width:100%;height:100%;object-fit:cover}
+.item{margin:0}
+.item figcaption{margin-top:12px;font-weight:600;font-size:18px;text-align:center}
+.price{font-size:30px;font-weight:800;margin:10px 0 14px;color:var(--accent)}
+.plan .muted{margin:0}
+.packs{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-bottom:14px}
+.qty{color:var(--muted);margin:0 0 14px}
+.opt{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:15px}
+.opt strong{color:var(--accent);font-weight:800;font-size:19px;white-space:nowrap}
+.vip{border-color:var(--accent)}
+.packs{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.plan .qty{color:var(--muted);margin:0 0 14px}
+.plan.vip{border-color:var(--accent)}
+h2.sub{font-size:22px;margin:40px 0 16px}
+.extras .row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 16px;padding:12px 0;border-bottom:1px solid var(--line)}
+.extras .row:first-child{padding-top:0}
+.extras .row:last-child{border-bottom:0;padding-bottom:0}
+.extras .price-col{display:flex;flex-direction:column;align-items:flex-end;text-align:right;gap:2px;flex:1 1 auto;min-width:0}
+.extras strong{color:var(--accent);font-weight:800;white-space:nowrap}
+.extras .price-col small{white-space:normal}
+small{font-size:13px;font-weight:400;color:var(--muted)}
+.monthly{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 20px;border-color:var(--accent)}
+.monthly p{margin:0}
+.monthly .price{margin:0}
+.cta{text-align:center}
+footer{padding:28px 0;text-align:center;font-size:14px;color:var(--muted);border-top:1px solid var(--line)}
+.plan .opt{display:flex;width:100%;justify-content:space-between;align-items:baseline;gap:12px;margin-top:8px;padding:11px 14px;background:transparent;color:var(--fg);border:1px solid var(--line);border-radius:10px;font:inherit;cursor:pointer;text-align:left}
+.plan .opt span{font-size:14px;color:var(--muted)}
+.plan .opt strong{font-size:20px;font-weight:800;color:var(--accent);white-space:nowrap}
+.plan .opt:hover{border-color:var(--accent)}
+.plan .opt[aria-pressed="true"]{background:var(--accent);border-color:var(--accent)}
+.plan .opt[aria-pressed="true"] span,.plan .opt[aria-pressed="true"] strong{color:var(--accent-fg)}
+.plan.sel{border-color:var(--accent)}
+.opt:focus-visible,.chip:focus-visible,.stepper button:focus-visible{outline:3px solid var(--fg);outline-offset:2px}
+.pick{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding-top:16px;margin-top:4px;border-top:1px solid var(--line)}
+.chip{background:transparent;color:var(--fg);border:1px solid var(--accent);border-radius:99px;padding:9px 18px;font:inherit;font-weight:600;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-fg)}
+.chip:disabled{opacity:.45;cursor:not-allowed}
+.stepper{display:inline-flex;align-items:center;gap:10px}
+.stepper button{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--fg);font-size:18px;cursor:pointer}
+.stepper output{min-width:24px;text-align:center;font-weight:800}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--card);border-top:2px solid var(--accent);padding:12px 20px calc(12px + env(safe-area-inset-bottom,0px))}
+.bar[hidden]{display:none}
+.bar .in{max-width:880px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.bar strong{display:block;font-size:20px;font-weight:800;color:var(--accent)}
+.bar small{display:block;line-height:1.3}
+.bar .btn{padding:12px 20px;font-size:16px;white-space:nowrap}
+body.has-bar{padding-bottom:96px}
+</style>
+</head>
+<body>
+
+<header class="wrap hero">
+  <img class="logo" alt="MGads · Criativos que geram vendas" src="assets/logo.webp" width="860" height="275">
+  <h1>Criativos em vídeo que fazem o lead chamar no X1 e comprar.</h1>
+  <p class="muted">Produção de criativos para vender seu produto low ticket com mais volume e menos custo por conversa.</p>
+  <div class="hero-ctas">
+  <a class="btn" href="#pacotes">Escolha seu plano</a>
+  <a class="btn btn-outline" id="btnFale" href="#" target="_blank" rel="noopener">Fale conosco</a>
+  </div>
+</header>
+
+<section id="portfolio">
+  <div class="wrap">
+    <h2>Portfólio</h2>
+    <div class="grid">
+      <figure class="item"><div class="video"><video controls playsinline preload="metadata" poster="assets/poster-faz-e-fala.jpg"><source src="assets/faz-e-fala.mp4" type="video/mp4"></video></div><figcaption>Faz e fala</figcaption></figure>
+      <figure class="item"><div class="video"><video controls playsinline preload="metadata" poster="assets/poster-fundo-verde.jpg"><source src="assets/fundo-verde.mp4" type="video/mp4"></video></div><figcaption>Fundo verde</figcaption></figure>
+      <figure class="item"><div class="video"><video controls playsinline preload="metadata" poster="assets/poster-tela-dividida.jpg"><source src="assets/tela-dividida.mp4" type="video/mp4"></video></div><figcaption>Tela dividida</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="pacotes">
+  <div class="wrap">
+    <h2>Planos</h2>
+    <p class="muted">Toque no preço do plano que você quer. Sua escolha vai junto na mensagem do WhatsApp.</p>
+    <div class="grid packs">
+      <div class="card plan" data-plan="Start" data-qty="1 criativo" data-avatar="20" data-max="1"><h3>Plano Start</h3><p class="qty">1 criativo</p>
+        <button type="button" class="opt" data-copy="Com nossa copy" data-price="50" aria-pressed="false"><span>Com nossa copy</span><strong>R$ 50</strong></button>
+        <button type="button" class="opt" data-copy="Com copy do cliente" data-price="40" aria-pressed="false"><span>Com copy do cliente</span><strong>R$ 40</strong></button></div>
+      <div class="card plan" data-plan="Bronze" data-qty="3 criativos" data-avatar="20" data-max="3"><h3>Plano Bronze</h3><p class="qty">3 criativos</p>
+        <button type="button" class="opt" data-copy="Com nossa copy" data-price="130" aria-pressed="false"><span>Com nossa copy</span><strong>R$ 130</strong></button>
+        <button type="button" class="opt" data-copy="Com copy do cliente" data-price="100" aria-pressed="false"><span>Com copy do cliente</span><strong>R$ 100</strong></button></div>
+      <div class="card plan" data-plan="Prata" data-qty="5 criativos" data-avatar="20" data-max="5"><h3>Plano Prata</h3><p class="qty">5 criativos</p>
+        <button type="button" class="opt" data-copy="Com nossa copy" data-price="180" aria-pressed="false"><span>Com nossa copy</span><strong>R$ 180</strong></button>
+        <button type="button" class="opt" data-copy="Com copy do cliente" data-price="150" aria-pressed="false"><span>Com copy do cliente</span><strong>R$ 150</strong></button></div>
+      <div class="card plan" data-plan="Ouro" data-qty="10 criativos" data-avatar="10" data-avatar20="5" data-max="10"><h3>Plano Ouro</h3><p class="qty">10 criativos</p>
+        <button type="button" class="opt" data-copy="Com nossa copy" data-price="310" aria-pressed="false"><span>Com nossa copy</span><strong>R$ 310</strong></button>
+        <button type="button" class="opt" data-copy="Com copy do cliente" data-price="280" aria-pressed="false"><span>Com copy do cliente</span><strong>R$ 280</strong></button></div>
+      <div class="card plan" data-plan="Diamante" data-qty="15 criativos" data-avatar="10" data-avatar20="5" data-max="15"><h3>Plano Diamante</h3><p class="qty">15 criativos</p>
+        <button type="button" class="opt" data-copy="Com nossa copy" data-price="430" aria-pressed="false"><span>Com nossa copy</span><strong>R$ 430</strong></button>
+        <button type="button" class="opt" data-copy="Com copy do cliente" data-price="400" aria-pressed="false"><span>Com copy do cliente</span><strong>R$ 400</strong></button></div>
+      <div class="card plan vip" data-plan="VIP" data-qty="3 vídeos por dia, seg a sex" data-avatar="10" data-avatar20="5" data-max="60" data-monthly="1"><h3>Plano VIP</h3><p class="qty">3 vídeos por dia (seg-sex)</p>
+        <button type="button" class="opt" data-copy="Com nossa copy" data-price="1600" aria-pressed="false"><span>Com nossa copy</span><strong>R$ 1.600</strong></button>
+        <button type="button" class="opt" data-copy="Com copy do cliente" data-price="1320" aria-pressed="false"><span>Com copy do cliente</span><strong>R$ 1.320</strong></button></div>
+    </div>
+
+    <h2 class="sub">Adicionais</h2>
+    <div class="card extras">
+      <div class="row"><span>Avatar de IA <small>Start a Prata</small></span><span class="price-col"><strong>R$ 20</strong><small>por vídeo</small></span></div>
+      <div class="row"><span>Avatar de IA <small>Ouro a VIP</small></span><span class="price-col"><strong>R$ 10</strong><small>por vídeo, R$ 5 a partir de 20 vídeos</small></span></div>
+      <div class="pick">
+        <button type="button" id="avtoggle" class="chip" aria-pressed="false" disabled>Adicionar avatar de IA</button>
+        <span class="stepper" id="avstep" hidden><button type="button" id="avminus" aria-label="Menos">−</button><output id="avqty">1</output><button type="button" id="avplus" aria-label="Mais">+</button><small>vídeos com avatar</small></span>
+        <small id="avhint">Escolha um plano primeiro.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="cta">
+  <div class="wrap">
+    <h2>Vamos colocar criativos novos no ar?</h2>
+    <a class="btn" data-wa href="#contato">Falar no WhatsApp</a>
+  </div>
+</section>
+
+<footer><div class="wrap">© 2026 MGads</div></footer>
+
+<div class="bar" id="bar" hidden><div class="in"><div><strong id="barTotal"></strong><small id="barInfo"></small></div><a class="btn" data-wa href="#contato">Enviar no WhatsApp</a></div></div>
+
+<script>
+var WHATSAPP_NUMERO = "5571996556037";
+var st = {plan:null, name:"", qty:"", copy:"", price:0, monthly:false, av:false, avq:1, avp:0, avp20:0, max:1};
+function $(id){return document.getElementById(id)}
+function fmt(n){return "R$ "+n.toLocaleString("pt-BR")}
+function avUnit(){return st.avq>=20 ? st.avp20 : st.avp}
+function total(){return st.price + (st.av ? st.avq*avUnit() : 0)}
+function mensagem(){
+  if(!st.plan) return "Olá! Vi a página da MGads e quero saber mais sobre os criativos.";
+  var l = ["Olá! Vi a página da MGads e quero fechar este pedido:", "",
+    "*Plano "+st.name+"* ("+st.qty+")",
+    "Copy: "+st.copy+" – "+fmt(st.price)+(st.monthly?" (mensal)":"")];
+  if(st.av) l.push("Adicional: Avatar de IA – "+st.avq+" vídeo"+(st.avq>1?"s":"")+" x "+fmt(avUnit())+" = "+fmt(st.avq*avUnit()));
+  l.push("*Total: "+fmt(total())+"*");
+  return l.join("\n");
+}
+function render(){
+  document.querySelectorAll(".plan").forEach(function(c){c.classList.toggle("sel", c===st.plan)});
+  var MENSAGEM_PADRAO = "Ol\u00e1! Vi a p\u00e1gina da MGads e quero saber mais sobre os criativos.";
+(function(){
+  var f = document.getElementById("btnFale");
+  f.href = "https://wa.me/"+WHATSAPP_NUMERO+"?text="+encodeURIComponent(MENSAGEM_PADRAO);
+})();
+document.querySelectorAll(".opt").forEach(function(b){
+    b.setAttribute("aria-pressed", String(b.closest(".plan")===st.plan && b.dataset.copy===st.copy));
+  });
+  var has = !!st.plan;
+  $("avtoggle").disabled = !has;
+  $("avtoggle").setAttribute("aria-pressed", String(st.av));
+  $("avstep").hidden = !st.av;
+  $("avqty").textContent = st.avq;
+  $("avhint").textContent = !has ? "Escolha um plano primeiro." : (st.av ? fmt(avUnit())+" por vídeo"+(st.avp20<st.avp && st.avq<20 ? " (R$ "+fmt(st.avp20)+" a partir de 20)" : "") : "");
+  $("bar").hidden = !has;
+  document.body.classList.toggle("has-bar", has);
+  if(has){
+    $("barTotal").textContent = "Total "+fmt(total())+(st.monthly?" /mês":"");
+    $("barInfo").textContent = "Plano "+st.name+" · "+st.copy+(st.av?" · Avatar x"+st.avq:"");
+  }
+  var url = "https://wa.me/"+WHATSAPP_NUMERO+"?text="+encodeURIComponent(mensagem());
+  document.querySelectorAll("[data-wa]").forEach(function(a){a.href=url; a.target="_blank"; a.rel="noopener"});
+}
+document.querySelectorAll(".opt").forEach(function(b){
+  b.addEventListener("click", function(){
+    var c = b.closest(".plan");
+    st.plan=c; st.name=c.dataset.plan; st.qty=c.dataset.qty; st.copy=b.dataset.copy;
+    st.price=+b.dataset.price; st.monthly=!!c.dataset.monthly; st.avp=+c.dataset.avatar; st.avp20=c.dataset.avatar20?+c.dataset.avatar20:+c.dataset.avatar; st.max=+c.dataset.max;
+    if(st.avq>st.max) st.avq=st.max;
+    render();
+  });
+});
+$("avtoggle").addEventListener("click", function(){ if(st.plan){ st.av=!st.av; render(); } });
+$("avminus").addEventListener("click", function(){ if(st.avq>1){ st.avq--; render(); } });
+$("avplus").addEventListener("click", function(){ if(st.avq<st.max){ st.avq++; render(); } });
+render();
+</script>
+</body>
+</html>
